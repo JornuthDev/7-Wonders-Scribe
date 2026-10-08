@@ -2,7 +2,7 @@
 :root{color-scheme:light;--ink:#1a2a3a;--gold:#c5a059;--paper:#f2ebd9}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,sans-serif}header{background:#122232 url(header.png) center 35%/cover;text-align:center;color:var(--gold);padding:24px 12px 0}header p{text-transform:uppercase;font-size:11px;letter-spacing:3px;margin:0 0 8px}h1,h2,summary{font-family:Cinzel,Georgia,serif}h1{font-weight:500;font-size:clamp(25px,6vw,39px);margin:0 0 20px}.frieze{border-block:1px solid #c5a05988;letter-spacing:8px;font-size:14px;overflow:hidden;white-space:nowrap}main{max-width:620px;margin:auto;padding:26px 20px}h2{font-size:21px;margin:0 0 12px}p{margin:12px 0}.welcome{text-align:center;padding:0 12px 24px}.logo {
   display: block;
-  width: 500px !important;
+  width: 200px !important;
   height: auto !important;
   max-width: 100%;
   object-fit: contain;
