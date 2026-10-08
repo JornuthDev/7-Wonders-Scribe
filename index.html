@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1a2a3a">
+<meta name="referrer" content="no-referrer">
+<title>Télécharger · 7 Wonders Scribe</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.mjs"></script>
+</head>
+<body>
+<header><p>Votre carnet de parties</p><h1>7 Wonders Scribe</h1><div class="frieze" aria-hidden="true">✦ ◇ ✦ ◇ ✦ ◇ ✦ ◇ ✦ ◇ ✦</div></header>
+<main>
+<section class="welcome">
+<img class="logo" src="logo.png" width="156" height="156" alt="Emblème 7 Wonders Scribe">
+<h2>Une partie. Des souvenirs.</h2>
+<p>Retrouvez vos joueurs, préparez vos parties et gardez une trace de chaque victoire.</p>
+<div class="version"><strong id="version">Dernière version</strong><span id="size">Application Android</span></div>
+<button id="download" class="primary" disabled>Télécharger l’application</button>
+<progress id="progress" max="1" value="0" hidden aria-label="Téléchargement de l’application"></progress>
+<p id="status" role="status" aria-live="polite">Recherche de la dernière version…</p>
+<a id="save" class="primary" hidden>Enregistrer l’APK</a>
+<button id="cancel" class="quiet" hidden>Annuler le téléchargement</button>
+<button id="retry" class="quiet" hidden>Réessayer</button>
+</section>
+<section class="card">
+<h2>Votre première installation</h2>
+<ol><li>Téléchargez et enregistrez le fichier APK.</li><li>Ouvrez-le dans les téléchargements de votre téléphone.</li><li>Si Android le demande, autorisez votre navigateur à installer cette application, puis confirmez l’installation.</li><li>Connectez-vous ou créez votre compte.</li></ol>
+<p class="muted">Les prochaines mises à jour seront proposées directement dans l’application. L’APK s’installe sur Android uniquement.</p>
+</section>
+<details id="release-notes" class="card" hidden><summary>Dans cette version</summary><div id="notes"></div></details>
+<section class="share card"><div><h2>Invitez votre table</h2><p>Un seul lien à partager, toujours la dernière version.</p><button id="copy" class="quiet">Copier le lien</button></div><a href="qr-code.png" download="7-wonders-scribe-qr.png" title="Enregistrer le QR code"><img src="qr-code.png" width="150" height="150" alt="QR code vers cette page de téléchargement"></a></section>
+</main>
+<footer>7 Wonders Scribe · Application privée, distribuée hors Play Store.</footer>
+</body>
+</html>
