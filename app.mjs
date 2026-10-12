@@ -1,3 +1,4 @@
+import {noteList} from './patch-notes.mjs';
 import {createAPI, downloadRelease} from './download.mjs';
 import {config} from './config.mjs';
 const $ = id => document.getElementById(id);
@@ -14,10 +15,7 @@ function showNotes(notes) {
   for (const category of ['Design', 'Features', 'Correctifs', 'Performances', 'Autres']) {
     if (!Array.isArray(notes?.[category]) || !notes[category].length) continue;
     const title = document.createElement('h3'); title.textContent = category;
-    const list = document.createElement('ul');
-    for (const text of notes[category]) {
-      const item = document.createElement('li'); item.textContent = text; list.append(item);
-    }
+    const list = noteList(notes[category]);
     $('notes').append(title, list);
   }
   $('release-notes').hidden = !$('notes').children.length;
@@ -40,6 +38,13 @@ async function load() {
 }
 $('download').addEventListener('click', async () => {
   if (busy || !release) return;
+  if (release.apk_url) {
+    // Native browser download avoids cross-origin fetch/CORS and a full APK in RAM.
+    // validateRelease already restricts this URL to our exact GitHub asset.
+    window.location.assign(release.apk_url);
+    status('Téléchargement via GitHub : suivez sa progression dans les téléchargements du navigateur, puis ouvrez l’APK.');
+    return;
+  }
   busy = true;
   active = new AbortController();
   $('download').disabled = true;

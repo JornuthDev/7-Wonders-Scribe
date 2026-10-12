@@ -10,6 +10,11 @@ export function validateRelease(release) {
   }
   const path = `android/${release.build}/${release.sha256}.apk`;
   if (release.apk_path !== path) throw new Error('Chemin de téléchargement invalide.');
+  if (release.apk_url) {
+    const expected = `https://github.com/JornuthDev/7-Wonders-Scribe/releases/download/scribe-build-${release.build}/scribe-${release.build}.apk`;
+    if (release.apk_url !== expected || release.apk_parts?.length) throw new Error('URL GitHub invalide.');
+    return [{path, size:release.apk_size, sha256:release.sha256}];
+  }
   const parts = release.apk_parts?.length ? release.apk_parts : [{path, size: release.apk_size, sha256: release.sha256}];
   if (!Array.isArray(parts) || parts.length > 13) throw new Error('Liste des fichiers invalide.');
   let total = 0;
@@ -42,7 +47,7 @@ export function createAPI(config, fetcher = fetch) {
   }
   return {
     async latest(signal) {
-      const policy = await post('/rest/v1/rpc/get_app_update', {}, signal);
+      const policy = await post('/rest/v1/rpc/get_app_update_v2', {}, signal);
       if (!policy?.release) return null;
       validateRelease(policy.release);
       return policy.release;
